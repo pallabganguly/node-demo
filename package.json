@@ -1,0 +1,19 @@
+{
+  "name": "demoapp",
+  "version": "1.0.0",
+  "description": "A demo app to learn node",
+  "main": "main.js",
+  "scripts": {
+    "dev": "nodemon main.js"
+  },
+  "author": "Pallab Ganguly",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongodb": "^3.1.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
