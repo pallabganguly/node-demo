@@ -1,5 +1,5 @@
 // master route file
-const noteRoutes = require('./noteroutes');
+const noteRoutes = require('./note.routes');
 
 module.exports = function(app, db) {
     // different service routes go here
