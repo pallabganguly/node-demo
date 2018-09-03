@@ -21,7 +21,7 @@ mongoose.connect(dbConfig.url, {
     console.log('Some error ' + err + " occurred");
 })
     
-require('./app/routes')(app, {});
+require('./app/routes/note.routes.js')(app, {});
 
 app.listen(port, () => {
     console.log("Server live at http://localhost:" + port);

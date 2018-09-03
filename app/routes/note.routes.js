@@ -1,12 +1,18 @@
 module.exports = function(app, db) {
     // just one service route
-    app.post('/notes', (req, res) => {
-        res.send("Hello, world!")
-        console.log(req.body)
-    });
+    const notes = require('../controllers/note.controller.js');
+
+    app.post('/notes', notes.createNode); //function in controller
+
+    app.get('/notes', notes.getAllNotes);
+
+    app.get('/notes:noteId', notes.getNoteById);
+
+    app.put('/notes:noteId', notes.updateNote);
+
+    app.delete('/notes:noteId', notes.deleteNote);
 
     app.get('/', (req, res) => {
-        res.json({'message': 'Welcome to the home page of the application!'})
-        console.log('In GET')
+        console.log('GET request');
     });
 };
