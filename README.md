@@ -6,7 +6,8 @@ How to run:
 ```
 git clone https://github.com/pallabganguly/node-demo
 cd node-demo
-npm install
+Install dependencies: npm install
+Start mongo: sudo system ctl start mongod
 npm run dev
 ```
 
