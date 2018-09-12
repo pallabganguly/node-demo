@@ -21,6 +21,13 @@ exports.createNote = (req, res) => {
 };
 
 exports.getAllNotes = (req, res) => {
+    Note.find().then(notes => {
+        res.send(notes);
+    }).catch(err => {
+        res.status(500).send({
+            message: "Some error occured while retrieving notes"
+        });
+    });
 
 };
 
