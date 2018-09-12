@@ -32,6 +32,7 @@ exports.getAllNotes = (req, res) => {
 };
 
 exports.getNoteById = (req, res) => {
+    
 
 };
 
