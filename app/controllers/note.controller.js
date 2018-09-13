@@ -28,12 +28,16 @@ exports.getAllNotes = (req, res) => {
             message: "Some error occured while retrieving notes"
         });
     });
-
 };
 
 exports.getNoteById = (req, res) => {
-    
-
+    Note.findById(req.params.Id).then(notes => {
+        res.send(notes);
+    }).catch(err => {
+        res.status(404).send({
+            message: "Note could not be found or does not exist"
+        });
+    });
 };
 
 exports.updateNote = (req, res) => {
