@@ -2,7 +2,9 @@ module.exports = function(app, db) {
     // just one service route
     const notes = require('../controllers/note.controller.js');
 
-    app.post('/notes', notes.createNote); //function in controller
+    app.post('/notes', notes.createNote, (req, res) =>{
+        console.log("Data recieved "+res);
+    }); //function in controller
 
     app.get('/notes', notes.getAllNotes);
 

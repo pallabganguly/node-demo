@@ -1,14 +1,15 @@
 const Note = require('../models/note.model.js');
 
 exports.createNote = (req, res) => {
-    if(req.body.content == null){
+    // console.log(req.body.title+":"+req.body.body);
+    if(req.body.body == null){
         return res.status(400).send({
             message: "The body cannot be empty!"
         });
     }
     const note = new Note({
         title: req.body.title,
-        content: req.body.content
+        body: req.body.body
     });
     note.save().then(data => {
         res.send(data);
