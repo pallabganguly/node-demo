@@ -8,7 +8,7 @@ exports.createNote = (req, res) => {
         });
     }
     const note = new Note({
-        title: req.body.title,
+        title: req.body.title || "Untitled Note",
         body: req.body.body
     });
     note.save().then(data => {
@@ -26,7 +26,7 @@ exports.getAllNotes = (req, res) => {
         res.send(notes);
     }).catch(err => {
         res.status(500).send({
-            message: "Some error occured while retrieving notes"
+            message: err.message || "Some error occured while retrieving notes"
         });
     });
 };
