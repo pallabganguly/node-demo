@@ -32,7 +32,8 @@ exports.getAllNotes = (req, res) => {
 };
 
 exports.getNoteById = (req, res) => {
-    Note.findById(req.params.Id).then(notes => {
+    console.log(req.params.noteId)
+    Note.findById(req.params.noteId).then(notes => {
         res.send(notes);
     }).catch(err => {
         res.status(404).send({
