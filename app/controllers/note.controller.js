@@ -33,11 +33,6 @@ exports.getAllNotes = (req, res) => {
 
 exports.getNoteById = (req, res) => {
     Note.findById(req.params.noteId).then(note => {
-        // if(note == null) {
-        //     return res.status(400).send({
-        //         message: "Note with Id " + req.params.noteId + " could not be found or does not exist"
-        //     });
-        // }
         res.send(note);
     }).catch(err => {
         if(err.kind === 'ObjectId') {

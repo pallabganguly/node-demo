@@ -4,7 +4,8 @@
   "description": "A demo app to learn node",
   "main": "main.js",
   "scripts": {
-    "dev": "nodemon main.js"
+    "dev": "nodemon main.js",
+    "mongo": "sudo systemctl start mongod"
   },
   "author": "Pallab Ganguly",
   "license": "MIT",

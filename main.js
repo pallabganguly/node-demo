@@ -18,10 +18,11 @@ mongoose.connect(dbConfig.url, {
 }).then(() => {
     console.log('Connected to the database: '+dbConfig.url);
 }).catch(err => {
-    console.log('Some error ' + err + " occurred");
+    console.log('Some error occurred:\n' + err);
 })
     
 require('./app/routes/note.routes.js')(app, {});
+
 
 app.listen(port, () => {
     console.log("Server live at http://localhost:" + port);
