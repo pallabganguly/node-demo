@@ -11,8 +11,8 @@ exports.createNote = (req, res) => {
         title: req.body.title || "Untitled Note",
         body: req.body.body
     });
-    note.save().then(data => {
-        res.send(data);
+    note.save().then(note => {
+        res.send(note);
     }).catch(err => {
         res.status(500).send({
             message: "Some error occured while saving your note"
@@ -32,12 +32,21 @@ exports.getAllNotes = (req, res) => {
 };
 
 exports.getNoteById = (req, res) => {
-    console.log(req.params.noteId)
-    Note.findById(req.params.noteId).then(notes => {
-        res.send(notes);
+    Note.findById(req.params.noteId).then(note => {
+        // if(note == null) {
+        //     return res.status(400).send({
+        //         message: "Note with Id " + req.params.noteId + " could not be found or does not exist"
+        //     });
+        // }
+        res.send(note);
     }).catch(err => {
-        res.status(404).send({
-            message: "Note could not be found or does not exist"
+        if(err.kind === 'ObjectId') {
+            return res.status(404).send({
+                message: "Note with Id"+ req.params.noteId + " was not found or does not exist"
+            });
+        }
+        return res.status(500).send({
+            message: "Some error occured while retrieving note "+ req.params.noteId
         });
     });
 };
