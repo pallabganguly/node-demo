@@ -54,7 +54,7 @@ exports.deleteNote = (req, res) => {
     Note.findByIdAndRemove(req.params.noteId).then(note => {
         if(note == null) {
             return res.status(404).send({
-                message: "Note not found with id " + req.params.noteId
+                message: "Note with Id"+ req.params.noteId + " was not found or does not exist"
             });
         }
         res.send({
