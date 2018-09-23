@@ -7,7 +7,7 @@ How to run (tested on Ubuntu 16.04):
 git clone https://github.com/pallabganguly/node-demo
 cd node-demo
 Install dependencies: npm install
-Start mongo: sudo systemctl start mongod
+Start mongo: sudo systemctl start mongod OR npmm run mongo
 npm run dev
 ```
 
