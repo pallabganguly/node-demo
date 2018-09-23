@@ -52,7 +52,31 @@ exports.getNoteById = (req, res) => {
 };
 
 exports.updateNote = (req, res) => {
-
+    if(req.body.body == null){
+        return res.status(400).send({
+            message: "The body cannot be empty!"
+        });
+    }
+    Note.findByIdAndUpdate(req.params.noteId, {
+        title: req.body.title || "Untitled Note",
+        body: req.body.body
+    }).then(note => {
+        if(note === null) {
+            return res.status(404).send({
+                message: "Note with Id"+ req.params.noteId + " was not found or does not exist"
+            });
+        }
+        res.send(note);
+    }).catch(err => {
+        if(err.kind === 'ObjectId') {
+            return res.status(404).send({
+                message: "Note with Id"+ req.params.noteId + " was not found or does not exist"
+            });
+        }
+        return res.status(500).send({
+            message: "Some error occured while updating note "+ req.params.noteId
+        });
+    });
 };
 
 exports.deleteNote = (req, res) => {
